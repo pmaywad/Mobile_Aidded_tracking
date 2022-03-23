@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Health Application</string>
+    <string-array name="symptoms_array">
+        <item>Nausea</item>
+        <item>Headache</item>
+        <item>Diarrhea</item>
+        <item>Soar Throat</item>
+        <item>Fever</item>
+        <item>Muscle Ache</item>
+        <item>Loss of Smell or Taste</item>
+        <item>Cough</item>
+        <item>Shortness of Breath</item>
+        <item>Feeling Tired</item>
+    </string-array>
+<!--    <string name="symptomsScreen">Register Symptoms</string>-->
+<!--    <string name="update_button">Upload</string>-->
+<!--    <string name="symptom_page_heading">Rate Symptoms</string>-->
+<!--    <string name="recordBtn">Camcorder</string>-->
+<!--    <string name="upload_signs">Update</string>-->
+<!--    <string name="measure_pulse">Calibrate Heart Rate</string>-->
+<!--    <string name="calcResp">Calibrate Respiratory Rate</string>-->
+
+</resources>

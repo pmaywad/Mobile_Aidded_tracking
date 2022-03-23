@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDFFE7"
+    >
+
+
+    <Button
+        android:id="@+id/recordBtn"
+        android:layout_width="363dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:text="Open Camera To Record"
+        android:background="#FAE8E0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/symptomsScreen"
+        android:layout_width="363dp"
+        android:layout_height="62dp"
+        android:background="#FAE8E0"
+        android:text="Choose Symptoms"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656" />
+
+    <Button
+        android:id="@+id/calcResp"
+        android:layout_width="358dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="84dp"
+        android:background="#FAE8E0"
+        android:text="Press to Calculate Respiratory Rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/showHeartRate" />
+
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="358dp"
+        android:layout_height="50dp"
+        android:background="#EF7C8E"
+        android:text="Upload Signs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/symptomsScreen"
+        app:layout_constraintVertical_bias="0.896" />
+
+    <Button
+        android:id="@+id/calcHeartRate"
+        android:layout_width="361dp"
+        android:layout_height="48dp"
+        android:background="#FAE8E0"
+        android:layout_marginTop="48dp"
+        android:text="Press to Calculate Heart Rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recordBtn" />
+
+    <TextView
+        android:id="@+id/showHeartRate"
+        android:layout_width="353dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="68dp"
+        android:autoText="false"
+
+        android:text="Press Above Button For Calculation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/calcHeartRate" />
+
+    <TextView
+        android:id="@+id/showResp"
+        android:layout_width="356dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="76dp"
+        android:text="Press Above Button For Calculation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/calcResp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="25dp" />
+
+    <Button
+        android:id="@+id/locationbutton"
+        android:layout_width="351dp"
+        android:layout_height="49dp"
+        android:text="Get Location"
+        android:background="#FAE8E0"
+        app:layout_constraintBottom_toTopOf="@+id/uploadBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/symptomsScreen"
+        app:layout_constraintVertical_bias="0.339" />
+
+    <TextView
+        android:id="@+id/locationtextView"
+        android:layout_width="350dp"
+        android:layout_height="33dp"
+        android:text="Press the button to get location"
+        app:layout_constraintBottom_toTopOf="@+id/uploadBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
