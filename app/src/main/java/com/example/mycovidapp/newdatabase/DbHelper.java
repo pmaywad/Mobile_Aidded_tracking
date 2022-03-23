@@ -1,37 +1,25 @@
-package com.example.mycovidapp.newdatabase;
+package com.example.symptomTrackerApp.dbAdapter;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-
-
-import com.example.mycovidapp.database.User;
-//
-//import net.sqlcipher.database.SQLiteDatabase;
-//import net.sqlcipher.database.SQLiteOpenHelper;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
-
-import org.apache.commons.lang3.builder.EqualsExclude;
-
-import java.io.File;
 
 public class DbHelper extends SQLiteOpenHelper {
 
     private static DbHelper instance;
     public static final int DATABASE_VER=1;
     public static final String DATABASE_NAME="dixit.db"; //Can also change it according to username
-    File file;
+
     public static final String TABLE_NAME="UserData";
 
-    public static String password=SetterGetter.passWord;
+    public static String password="1234";
 
     private static final String SQL_TABLE_QUERY =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    "id" + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "date" + " TEXT, " +
+                    "id" + " INTEGER PRIMARY KEY," +
+                    "date" + " REAL, " +
                     "Headache" + " TEXT, " +
                     "Nausea" + " REAL," +
                     "rateHeart" + " REAL, " +
@@ -46,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     "lossOfSmell" + " REAL, " +
                     "latitude" + " REAL, " +
                     "longitude" + " REAL, " +
-                    "locationTimeStamp" + " TEXT)";
+                    "locationTimeStamp" + " REAL)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -58,48 +46,12 @@ public class DbHelper extends SQLiteOpenHelper {
     {
         if(instance==null)
         {
-           //instance=SQLiteDatabase.openOrCreateDatabase(new File("data/data"))
             instance=new DbHelper(context);
         }
 
         return instance;
     }
 
-    public static void getPassword()
-    {
-       // SharedPreferences preferences = getSharedPreferences("Username", Context.MODE_PRIVATE);
-    }
-
-    public static User getLatest()
-    {
-        User user=new User();
-
-        //SQLiteDatabase db= instance.getReadableDatabase(password.toCharArray());
-        SQLiteDatabase database=instance.getReadableDatabase(password.toCharArray());
-        String q= "SELECT MAX(id) FROM "+TABLE_NAME;
-
-        Cursor c= database.rawQuery(q,null);
-        c.moveToFirst();
-        if(c!=null) {
-            int heartRate = c.getColumnIndex("rateHeart");
-            System.out.println("The indexxxxxxxxxx is " + heartRate);
-
-            user.rateHeart = c.getFloat(heartRate);
-
-            int respRate = c.getColumnIndex("rateBreathing");
-            user.rateBreathing = c.getFloat(respRate);
-
-            int latitude = c.getColumnIndex("latitude");
-            user.latitude = c.getFloat(latitude);
-
-            int longitude = c.getColumnIndex("longitude");
-            user.longitude = c.getFloat(longitude);
-
-            int id = c.getColumnIndex("id");
-            user.id = c.getInt(id) + 1;
-        }
-        return user;
-    }
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -109,46 +61,29 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        System.out.println("Helllllllooooooooooo");
     }
 
     public void InsertData(User user)
     {
-        //SQLiteDatabase db= this.getWritableDatabase(password.toCharArray());
-
-//        SQLiteDatabase database=this.getReadableDatabase();
-//        String q= "SELECT MAX(id) FROM "+TABLE_NAME;
-//        Cursor c= database.rawQuery(q,null);
-//
-//        int id=1;
-////        if(c.moveToFirst())
-////            id=c.getInt(0);
-//        c.moveToFirst();
-//        id=c.getInt(0)+1;
-//
-//        System.out.println("The id is "+id);
-
-
-//        c.close();
-//        database.close();
-
-        SQLiteDatabase db= this.getWritableDatabase(password.toCharArray());
+        SQLiteDatabase db= instance.getWritableDatabase(password.toCharArray());
         ContentValues values=new ContentValues();
-        //values.put("id",user.id);
-        values.put("date",String.valueOf(user.date));
-        values.put("Headache",user.Headache);
-        values.put("Nausea",user.Nausea);
+        values.put("id",user.id);
+        values.put("dateTime",String.valueOf(user.dateTime));
+        values.put("headache",user.headache);
+        values.put("nausea",user.nausea);
         values.put("rateHeart",user.rateHeart);
 
         values.put("rateBreathing",user.rateBreathing);
-        values.put("Fever",user.Fever);
+        values.put("fever",user.fever);
         values.put("cough",user.cough);
 
         values.put("tired",user.tired);
         values.put("shortnessOfBreath",user.shortnessOfBreath);
         values.put("MuscleAche",user.MuscleAche);
 
-        values.put("Diarrhea",user.Diarrhea);
+
+
+        values.put("diarrhea",user.diarrhea);
         values.put("soarThroat",user.soarThroat);
         values.put("lossOfSmell",user.lossOfSmell);
 
@@ -156,20 +91,10 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put("longitude",user.longitude);
         values.put("locationTimeStamp",String.valueOf(user.locationTimeStamp));
 
-
         db.insert(TABLE_NAME,null,values);
         db.close();
-    }
 
-//    @Override
-//    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//
-//
-//        sqLiteDatabase.execSQL(SQL_TABLE_QUERY);
-//    }
-//
-//    @Override
-//    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-//        System.out.println("Helllllllooooooooooo");
-//    }
+
+
+    }
 }

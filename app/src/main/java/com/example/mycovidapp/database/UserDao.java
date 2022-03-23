@@ -1,4 +1,4 @@
-package com.example.mycovidapp.database;
+package com.example.symptomTrackerApp.dbAdapter;
 
 import androidx.room.Query;
 import androidx.room.Dao;
@@ -10,7 +10,7 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM User")
     public int count();
 
-    @Query("SELECT * FROM User where date=(SELECT MAX(date) FROM User)")
+    @Query("SELECT * FROM User where dateTime=(SELECT MAX(dateTime) FROM User)")
     public User getLatestData();
 
     @Insert

@@ -1,4 +1,4 @@
-package com.example.mycovidapp.database;
+package com.example.symptomTrackerApp.dbAdapter;
 
 import androidx.room.TypeConverter;
 
@@ -33,9 +33,7 @@ public class ConverterDB {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return null;
-        } else {
-            return null;
         }
+        return null;
     }
 }

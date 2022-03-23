@@ -1,4 +1,4 @@
-package com.example.mycovidapp.symptoms;
+package com.example.symptomTrackerApp.symptoms;
 
 import android.app.Service;
 import android.content.Intent;

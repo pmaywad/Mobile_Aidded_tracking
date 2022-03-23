@@ -1,4 +1,4 @@
-package com.example.mycovidapp.database;
+package com.example.symptomTrackerApp.dbAdapter;
 
 import android.content.Context;
 

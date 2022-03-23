@@ -1,10 +1,7 @@
-package com.example.mycovidapp;
-
-import android.net.Uri;
+package com.example.symptomTrackerApp;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,11 +25,11 @@ public class UploadData{
             File file = new File("/data/user/0/com.example.mycovidapp/databases/dixit.db");
 
             if(file==null)
-                System.out.println("File not avail");
+                System.out.println("File is not available");
             RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                     .addFormDataPart("myfile", file.getName(), RequestBody.create(MediaType.parse("application/x-sqlite3"), file))
                     .addFormDataPart("subjectID", id)
-                    .addFormDataPart("date",date)
+                    .addFormDataPart("dateTime",date)
                     .build();
 
             Request request = new Request.Builder()
